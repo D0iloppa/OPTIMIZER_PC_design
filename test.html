@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Page title -->
+    <title>HOMER | WebApp admin theme</title>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="vendor/metisMenu/dist/metisMenu.css" />
+    <link rel="stylesheet" href="vendor/animate.css/animate.css" />
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" href="vendor/toastr/build/toastr.min.css" />
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="fonts/pe-icon-7-stroke/css/helper.css" />
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/static_custom.css">
+    
+
+    <style>
+        .upload-container {background: #ffffff; border:2px dashed  #2f8dff; cursor: pointer; text-align: center; font-weight: bold; color:#3995ff; height: 100px; padding-top: 40px;}
+        .progress {margin-bottom: 0; margin-top:10px;}
+        .bar {opacity: 0.5;}
+        .table thead th,
+        .table thead td {text-align: center;}
+        .table tbody td {text-align: center;}
+        .table tbody td button {line-height: 1;}
+        .file-list-container .hpanel {margin: 0;}
+        .file-list-container .panel-body {padding: 14px;}
+    </style>
+
+<script src="vendor/tabulator/dist/js/tabulator.min.js"></script>
+<link rel="stylesheet" href="styles/tabulator.css">
+</head>
+
+<body class="fixed-navbar sidebar-scroll">
+
+    <!-- Simple splash screen-->
+    <div class="splash">
+        <div class="color-line"></div>
+        <div class="splash-title">
+            <h1>Homer - Responsive Admin Theme</h1>
+            <p>Special Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p>
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+    </div>
+    <!--[if lt IE 7]>
+<p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+    <!-- Header -->
+    <div id="header">
+        <div id="logo" class="light-version">
+            <span>
+                <img src="images/logo.png" style="height: 20px; margin: 5px 0px 0px 15px;" />
+            </span>
+        </div>
+        <nav role="navigation">
+            <div class="navbar-right">
+                <ul class="nav navbar-nav no-borders">
+                    <li><a href="#"><i class="fa-solid fa-window-minimize"></i></a></li>
+                    <li><a href="#"><i class="fa-regular fa-window-maximize"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-x"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Navigation -->
+    <aside id="menu">
+        <div id="navigation">
+            <ul class="nav" id="side-menu">
+                <li><a href="#"><i class="fa fa-home"></i></a></li>
+                <li><a href="#"><i class="fa fa-rocket"></i></a></li>
+                <li><a href="#"><i class="fa fa-history"></i></a></li>
+                <li><a href="#"><i class="fa fa-gear"></i></a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div id="wrapper">
+       
+        <div class="content">
+            <div class="upload-container"><i class="fa-solid fa-arrow-up-from-bracket"></i> 클릭하여 파일을 첨부하거나, 파일을 끌어오세요.</div>
+        </div>
+        <div class="d-flex file-list-container">
+            <div class="col" style="flex: 0 0 240px">
+                <div>
+                    <div class="hpanel file-type-list">
+                        <div class="panel-body note-link">
+                            <a href="#note1" data-toggle="tab">
+                            <small class="pull-right text-muted">500건 <spoan class="bar">|</spoan> 100GB</small>
+                                <h5><i class="fa-solid fa-folder"></i> 모든 파일</h5>
+                            <div class="small">
+                                <div class="progress m-t-xs full progress-small">
+                                    <div style="width: 20%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class=" progress-bar progress-bar-warning">
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="panel-body note-link">
+                            <a href="#note1" data-toggle="tab">
+                            <small class="pull-right text-muted">500건 <spoan class="bar">|</spoan> 100GB</small>
+                                <h5><i class="fa-solid fa-folder"></i> 모든 파일</h5>
+                            <div class="small">
+                                <div class="progress m-t-xs full progress-small">
+                                    <div style="width: 20%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class=" progress-bar progress-bar-warning">
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="panel-body note-link">
+                            <a href="#note1" data-toggle="tab">
+                            <small class="pull-right text-muted">500건 <spoan class="bar">|</spoan> 100GB</small>
+                                <h5><i class="fa-solid fa-folder"></i> 모든 파일</h5>
+                            <div class="small">
+                                <div class="progress m-t-xs full progress-small">
+                                    <div style="width: 20%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class=" progress-bar progress-bar-warning">
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="panel-body note-link">
+                            <a href="#note1" data-toggle="tab">
+                            <small class="pull-right text-muted">500건 <spoan class="bar">|</spoan> 100GB</small>
+                                <h5><i class="fa-solid fa-folder"></i> 모든 파일</h5>
+                            <div class="small">
+                                <div class="progress m-t-xs full progress-small">
+                                    <div style="width: 20%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class=" progress-bar progress-bar-warning">
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <div class="col">
+                <div class="hpanel" >
+                    <div class="panel-body" style="height: 262px; padding:0;">
+                        <div id="example-table"></div>
+                    </div>
+                </div>
+            </div>
+       
+        </div>
+    
+        <div style="text-align: center; padding-top: 5px;">
+            <button type="button" class="btn w-xs btn-info"><i class="fa-solid fa-download"></i> 최적화 파일 다운로드</button>
+        </div>
+
+        <!-- Footer-->
+        <footer class="footer">
+            <span class="pull-right">
+                
+            </span>
+            ⓒ WELLCONN
+        </footer>
+
+        </div>
+    </div>
+
+    <!-- Vendor scripts -->
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="vendor/iCheck/icheck.min.js"></script>
+    <script src="vendor/sparkline/index.js"></script>
+    <script src="vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="vendor/toastr/build/toastr.min.js"></script>
+ 
+
+    <!-- App scripts -->
+    <script src="scripts/homer.js"></script>
+
+<script>
+
+$(function () {
+
+    // 샘플 데이터 생성
+    const tableData = Array.from({ length: 20 }, (_, i) => ({
+      id: i + 1,
+      name: `User ${i + 1}`,
+      age: Math.floor(Math.random() * 50) + 20,
+      email: `user${i + 1}@example.com`,
+      joinDate: new Date(Date.now() - Math.random() * 1e10).toISOString().split('T')[0],
+    }));
+
+    // Tabulator 테이블 초기화
+    const table = new Tabulator("#example-table", {
+      height: "260px", // 테이블 높이 (스크롤 활성화)
+      data: tableData, // 데이터 배열
+      layout: "fitColumns", // 컬럼 크기 조정
+      columns: [
+        { title: "ID", field: "id", hozAlign: "center", sorter: "number" },
+        { title: "Name", field: "name", hozAlign: "left", sorter: "string" },
+        { title: "Age", field: "age", hozAlign: "center", sorter: "number" },
+        { title: "Email", field: "email", hozAlign: "left", sorter: "string" },
+        { title: "Join Date", field: "joinDate", hozAlign: "center", sorter: "date" },
+      ],
+    });
+
+    $('.demo1').click(function () {
+        swal({
+            title: "Welcome in Alerts",
+            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        });
+    });
+
+    $('.demo2').click(function () {
+        swal({
+            title: "Good job!",
+            text: "You clicked the button!",
+            type: "success"
+        });
+    });
+
+    $('.demo3').click(function () {
+        swal({
+            title: "Are you sure?",
+            text: "Your will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!"
+        },
+            function () {
+                swal("Booyah!");
+            });
+    });
+
+    $('.demo4').click(function () {
+        swal({
+            title: "Are you sure?",
+            text: "Your will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+            function (isConfirm) {
+                if (isConfirm) {
+                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                } else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                }
+            });
+    });
+
+    // Toastr options
+    toastr.options = {
+        "debug": false,
+        "newestOnTop": false,
+        "positionClass": "toast-top-center",
+        "closeButton": true,
+        "toastClass": "animated fadeInDown",
+    };
+
+    $('.homerDemo1').click(function () {
+        toastr.info('Info - This is a custom Homer info notification');
+    });
+
+    $('.homerDemo2').click(function () {
+        toastr.success('Success - This is a Homer success notification');
+    });
+
+    $('.homerDemo3').click(function () {
+        toastr.warning('Warning - This is a Homer warning notification');
+    });
+
+    $('.homerDemo4').click(function () {
+        toastr.error('Error - This is a Homer error notification');
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<!-- LIBRARIES -->
+<!--common-->
+<script src="./common.js"></script>
+<!--tabulator-->
+<!--<script src="../lib/tabulator/tabulator.min.js"></script>-->
+<script src="vendor/tabulator/dist/js/tabulator.min.js"></script>
+<link rel="stylesheet" href="styles/tabulator.css">
+<!--<link rel="stylesheet" href="vendor/tabulator/dist/css/tabulator_simple.min.css">-->
+
+
+<!--font-awesome-->
+<link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
+<!-- tail-wind -->
+<link rel="stylesheet" href="../lib/tailwind/tailwind.min.css">
+<!-- dropzone -->
+<script src="../lib/dropzone/dropzone.min.js"></script>
+<link rel="stylesheet" href="../lib/dropzone/dropzone.min.css">
+<!-- App favicon -->
+<link rel="shortcut icon" href="assets/img/favicon/favicon.ico">
+
+
+<!-- Vendor styles -->
+<link rel="stylesheet" href="vendor/fontawesome/css/all.css" />
+<link rel="stylesheet" href="vendor/metisMenu/dist/metisMenu.css" />
+<link rel="stylesheet" href="vendor/animate.css/animate.css" />
+<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="vendor/sweetalert/lib/sweet-alert.css" />
+<link rel="stylesheet" href="vendor/toastr/build/toastr.min.css" />
+
+<!-- App styles -->
+<link rel="stylesheet" href="fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+<link rel="stylesheet" href="fonts/pe-icon-7-stroke/css/helper.css" />
+<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/static_custom.css">
+
+
+
+
+
+
+
+<!--THIS PAGE CSS-->
+<style>
+  #loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    /* 반투명 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* 최상단에 표시 */
+  }
+
+  /* 스피너 스타일 */
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  @media (max-width: 640px) {
+    .grid-cols-1 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .active {
+    background-color: #1d4ed8;
+  }
+
+  #top-logo {
+    width: 120px;
+  }
+
+
+  /* 드래그 가능한 영역 */
+  #header {
+    -webkit-app-region: drag;
+    /* 드래그 가능한 영역 */
+  }
+  .window-control li {
+  -webkit-app-region: no-drag;
+}
+
+  /*드래그 방지 영역*/
+  * {
+    -webkit-user-select: none;
+    /* 크롬, 사파리 등 웹킷 기반 브라우저 */
+    -moz-user-select: none;
+    /* 파이어폭스 */
+    -ms-user-select: none;
+    /* 구형 IE */
+    user-select: none;
+    /* 표준 */
+    -webkit-user-drag: none;
+    /* 드래그 방지 */
+  }
+
+  /* 전체 스크롤바 스타일 (웹킷 기반 브라우저) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    /* 스크롤바의 너비 설정 */
+    height: 6px;
+    /* 스크롤바 높이를 얇게 설정 */
+  }
+
+  /* 스크롤바의 트랙 (뒷 배경) */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* 트랙 배경색 */
+  }
+
+  /* 스크롤바의 핸들 (움직이는 막대) */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    /* 핸들 배경색 */
+    border-radius: 4px;
+    /* 모서리 둥글게 */
+  }
+
+  /* 스크롤바 핸들에 호버 효과 추가 */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* 호버 시 핸들 배경색 */
+  }
+
+
+
+
+  body {
+    overflow: hidden; /* 스크롤 제거 */
+  }
+
+
+
+  /* 버튼 스타일 */
+  .tabulator-paginator .tabulator-page {
+    border: none !important;
+    /* 버튼 테두리 제거 */
+    color: white !important;
+    /* 글씨 색상 흰색 */
+    background: transparent !important;
+    /* 배경색 제거 */
+  }
+
+  /* 활성화된 페이지 버튼 스타일 */
+  .tabulator-paginator .tabulator-page.active {
+    color: #60a5fa !important;
+    /* 활성화된 버튼의 글씨 색상 흰색 */
+    font-weight: bold !important;
+    /* 원하는 경우 굵게 표시 */
+  }
+
+  /* 페이지 버튼 호버 효과 (선택 사항) */
+  .tabulator-paginator .tabulator-page:hover {
+    cursor: pointer !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+</style>
+
+<body class="fixed-navbar sidebar-scroll">
+  <!-- Header -->
+  <div id="header">
+    <div id="logo" class="light-version">
+      <span>
+        <img src="images/logo.png" style="height: 20px; margin: 5px 0px 0px 15px;" />
+      </span>
+    </div>
+    <nav role="navigation">
+      <div class="navbar-right">
+        <ul class="nav navbar-nav no-borders window-control">
+          <li onclick="navClick('minimize')"><a href="#"><i class="fa-solid fa-window-minimize"></i></a></li>
+          <li onclick="navClick('maximize')"><a href="#"><i class="fa-regular fa-window-maximize"></i></a></li>
+          <li onclick="navClick('close')"><a href="#"><i class="fa-solid fa-x"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Navigation -->
+  <aside id="menu">
+    <div id="navigation">
+      <ul class="nav" id="side-menu">
+        <li class="menu-item" menuNm="home" menuStyle="page" onclick="loadContent(this,'home', null)"><a href="#"><i class="fa fa-home"></i></a></li>
+        <li class="menu-item" menuNm="optimizer" menuStyle="page" onclick="loadContent(this,'optimizer', null)"><a href="#"><i class="fa fa-rocket"></i></a></li>
+        <li class="menu-item" menuNm="history" menuStyle="page" onclick="loadContent(this,'history', null)"><a href="#"><i class="fa fa-history"></i></a></li>
+        <li class="menu-item" menuNm="settings" menuStyle="dialog" onclick="openModal(this,'settings', null)"><a href="#"><i class="fa fa-gear"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Wrapper -->
+  <div id="app-content"> </div>
+  <div id="app-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  </div>
+
+
+  <!-- Footer-->
+    <footer class="footer">
+      <span id="om-version-footer" class="pull-right">
+        VERSION : -
+      </span>
+      ⓒ WELLCONN
+    </footer>
+
+  </div>
+
+
+  <script>
+    const swal = require('sweetalert');
+    const { shell, webUtils, ipcRenderer } = require('electron');
+    // jquery 로딩
+    window.$ = window.jQuery = require('./assets/js/vendor/jquery-3.6.4.min');
+    require('./vendor/bootstrap/dist/js/bootstrap.min.js');
+
+    let g_optimizer = {
+      isLoading: false
+    }
+
+    // Dropzone 인스턴스화
+    Dropzone.autoDiscover = false;  // 기본 자동 발견 비활성화 (원하는 경우만 인스턴스화 가능)
+
+
+
+
+    let g_om = {};
+
+    document.addEventListener('DOMContentLoaded', async () => {
+
+
+
+
+      await ipcRenderer.invoke('file_type_init');
+      g_om = await ipcRenderer.invoke('getG_Om');
+
+
+      if(g_om.config?.om_version){
+        const om_version = g_om.config?.om_version;
+        document.getElementById('om-version-footer').innerHTML = `VERSION : ${om_version}`;
+      }
+
+      //hideLoading();
+
+      /*
+      if (g_om.user_id) {
+        document.getElementById('user_id').innerHTML = g_om.user_id;
+      }
+      */
+
+      // 최초 로딩 시 HOME 페이지 로드 및 메뉴 활성화
+
+      const homeElement = document.querySelector('.menu-item');
+      loadContent(homeElement, 'home');
+
+    });
+
+    /**
+     * element : 활성화 대상
+     * page : 이동할 페이지
+     * params : 파라미터
+    */
+    function loadContent(element, page, params) {
+      // 모든 메뉴에서 active 클래스 제거
+      const menuItems = document.querySelectorAll('.menu-item');
+      menuItems.forEach(item => item.classList.remove('active'));
+
+      // 클릭한 메뉴에 active 클래스 추가
+      element.classList.add('active');
+
+      // showLoading();
+      // 페이지 로딩
+      fetch(`${page}.html`)
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('app-content').innerHTML = html;
+
+
+          // 기존 "page_script" 스크립트 제거
+          const existingScript = document.getElementById('page_script');
+          if (existingScript) {
+            ipcRenderer.removeAllListeners("optimize-status-response"); // 리스너 제거
+            existingScript.remove();
+          }
+
+          // 추가적인 스크립트 로드
+          const scriptPath = `${page}.js`; // 페이지 이름을 기반으로 스크립트 경로 설정
+          const script = document.createElement('script');
+          script.src = scriptPath;
+          script.id = "page_script";
+          script.onload = () => {
+
+            if (params) {
+              const { pageCallBack = false } = params;
+
+              // 스크립트 로딩 후, 전역에 정의된 callback 함수가 있는지 확인
+              if (pageCallBack && typeof pageCallBack === 'function') {
+                pageCallBack(params);
+              }
+            }
+          };
+          document.body.appendChild(script);
+          hideLoading();
+        })
+    }
+
+    function openModal(element, page, params){
+
+      fetch(`${page}.html`)
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('app-modal').innerHTML = html;
+
+
+          // 기존 "page_script" 스크립트 제거
+          const existingScript = document.getElementById('modal_script');
+          if (existingScript) {
+            ipcRenderer.removeAllListeners("optimize-status-response"); // 리스너 제거
+            existingScript.remove();
+          }
+
+          // 추가적인 스크립트 로드
+          const scriptPath = `${page}.js`; // 페이지 이름을 기반으로 스크립트 경로 설정
+          const script = document.createElement('script');
+          script.src = scriptPath;
+          script.id = "modal_script";
+          script.onload = () => {
+
+            if (params) {
+              const { pageCallBack = false } = params;
+
+              // 스크립트 로딩 후, 전역에 정의된 callback 함수가 있는지 확인
+              if (pageCallBack && typeof pageCallBack === 'function') {
+                pageCallBack(params);
+              }
+            }
+          };
+          document.body.appendChild(script);
+          $('#app-modal .modal-dialog').css({
+            'max-width': '600px',
+            'max-height': '380px',
+            'margin': 'auto',
+            'top': '50%',
+            'transform': 'translateY(-50%)'
+          });
+
+
+          $('#app-modal').modal('show');
+          
+
+
+          hideLoading();
+        })
+
+
+
+    }
+
+    function navClick(operation){
+      switch(operation){
+        case "minimize" :
+          break;
+        case "maximize" :
+          break;
+        case "close" :
+        ipcRenderer.send('app-close');
+          break;
+        default:
+          break;
+      }
+    }
+
+    function showLoading() {
+      // document.getElementById("loading-overlay").style.display = "flex";
+
+      // 이미 로딩중인 경우
+      if (g_optimizer.isLoading) {
+        return;
+      }
+
+      g_optimizer.isLoading = true;
+
+      $("#fx-overlay").fadeIn("slow");
+    }
+
+    function hideLoading() {
+      // document.getElementById("loading-overlay").style.display = "none";
+
+
+      $("#fx-overlay").fadeOut("slow", function () {
+        g_optimizer.isLoading = false;
+      });
+
+    }
+  </script>
+
+
+</body>
+
+</html>
