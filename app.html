@@ -184,6 +184,12 @@
   }
 </style>
 
+    <!-- jQuery 로드 -->
+    <script src="./assets/js/vendor/jquery-3.6.4.min.js"></script>
+    <!-- Bootstrap JS 로드 -->
+    <script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
 <body class="fixed-navbar sidebar-scroll">
   <!-- Header -->
   <div id="header">
@@ -233,18 +239,10 @@
 
 
   <script>
-    const swal = require('sweetalert');
-    const { shell, webUtils, ipcRenderer } = require('electron');
-    // jquery 로딩
-    window.$ = window.jQuery = require('./assets/js/vendor/jquery-3.6.4.min');
-    require('./vendor/bootstrap/dist/js/bootstrap.min.js');
 
     let g_optimizer = {
       isLoading: false
     }
-
-    // Dropzone 인스턴스화
-    Dropzone.autoDiscover = false;  // 기본 자동 발견 비활성화 (원하는 경우만 인스턴스화 가능)
 
 
 
@@ -255,25 +253,6 @@
 
 
 
-
-      await ipcRenderer.invoke('file_type_init');
-      g_om = await ipcRenderer.invoke('getG_Om');
-
-
-      if(g_om.config?.om_version){
-        const om_version = g_om.config?.om_version;
-        document.getElementById('om-version-footer').innerHTML = `VERSION : ${om_version}`;
-      }
-
-      //hideLoading();
-
-      /*
-      if (g_om.user_id) {
-        document.getElementById('user_id').innerHTML = g_om.user_id;
-      }
-      */
-
-      // 최초 로딩 시 HOME 페이지 로드 및 메뉴 활성화
 
       const homeElement = document.querySelector('.menu-item');
       loadContent(homeElement, 'home');
