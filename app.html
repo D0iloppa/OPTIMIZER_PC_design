@@ -250,9 +250,97 @@
     }
 
 
+    
 
 
-    let g_om = {};
+
+    let g_om = {
+      file_types:{
+    "image": {
+        "type": "image",
+        "type_code": 1,
+        "label": "이미지",
+        "alias": "이미지 파일",
+        "type_icon": "ri-image-line",
+        "ext_arr": [
+            "jpg",
+            "jpeg",
+            "png",
+            "gif",
+            "bmp",
+            "svg"
+        ],
+        "algo_list": [
+            {
+                "algo_val": 1,
+                "label": "이미지",
+                "algo_nm": "OPTIMIZER 추천 최적화",
+                "type_code": 1
+            },
+            {
+                "algo_val": 2,
+                "label": "이미지",
+                "algo_nm": "해상도 최적화",
+                "type_code": 1
+            },
+            {
+                "algo_val": 3,
+                "label": "이미지",
+                "algo_nm": "포맷 최적화",
+                "type_code": 1
+            }
+        ]
+    },
+    "video": {
+        "type": "video",
+        "type_code": 2,
+        "label": "동영상",
+        "alias": "동영상 파일",
+        "type_icon": "ri-video-line",
+        "ext_arr": [
+            "mp4",
+            "avi",
+            "mov",
+            "mkv",
+            "webm"
+        ],
+        "algo_list": [
+            {
+                "algo_val": 1,
+                "label": "동영상",
+                "algo_nm": "OPTIMIZER 추천 최적화",
+                "type_code": 2
+            }
+        ]
+    },
+    "unstructured": {
+        "type": "unstructured",
+        "type_code": 5,
+        "label": "문서",
+        "alias": "문서 파일",
+        "type_icon": "ri-file-2-line",
+        "ext_arr": [
+            "pdf",
+            "zip",
+            "hwp",
+            "doc",
+            "docx",
+            "xls",
+            "xlsx",
+            "ppt",
+            "pptx"
+        ],
+        "algo_list": [
+            {
+                "algo_val": 1,
+                "label": "문서",
+                "algo_nm": "OPTIMIZER 추천 최적화",
+                "type_code": 5
+            }
+        ]
+    }
+}
+    };
 
     document.addEventListener('DOMContentLoaded', async () => {
 
