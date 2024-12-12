@@ -272,7 +272,7 @@ function updateFileStatus() {
 }
 
 function getFileList() {
-  return g_optimizer.dropzone.files;
+  return [];
 }
 
 function getCardElem(data) {
